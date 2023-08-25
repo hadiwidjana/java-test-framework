@@ -1,0 +1,5 @@
+15 May 2023 15:33:04  INFO logger - typing Bernini on Proxy element for: DefaultElementLocator 'By.xpath: //textarea[@title='Search']'
+15 May 2023 15:35:05  INFO logger - typing Rubens on Proxy element for: DefaultElementLocator 'By.xpath: //textarea[@title='Search']'
+15 May 2023 15:35:53  INFO logger - typing Ansel Adams on Proxy element for: DefaultElementLocator 'By.xpath: //textarea[@title='Search']'
+15 May 2023 15:36:19  INFO logger - typing Donatello on [[ChromeDriver: chrome on MAC (fdbac5b683622862e6c7ea26525dff98)] -> xpath: //textarea[@type='search']]
+15 May 2023 15:38:25  INFO logger - typing Dali on [[ChromeDriver: chrome on MAC (a914dcf280aa99ca690a0fb710613fe5)] -> xpath: //textarea[@type='search']]
