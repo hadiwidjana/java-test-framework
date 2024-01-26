@@ -5,7 +5,5 @@
     <listeners>
         <listener class-name="JavaDemo.Integrations.Listener.CustomListener"/>
     </listeners>
-    <suite-files>
-
-    </suite-files>
+    <test name="JavaDemo.FE.Web.TestClasses.LoginTest"/>
 </suite> <!-- Suite -->
