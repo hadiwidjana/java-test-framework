@@ -2,9 +2,8 @@ package JavaDemo.FE;
 
 import JavaDemo.Integrations.GoogleAPI.AppDistribution;
 import JavaDemo.Integrations.SpringBoot.BaseTest;
+import JavaDemo.Integrations.SpringBoot.PropertiesReader;
 import com.epam.healenium.SelfHealingDriver;
-import com.epam.healenium.appium.wrapper.DriverWrapper;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.gecko.options.GeckoOptions;
@@ -12,7 +11,6 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,9 +22,10 @@ import org.openqa.selenium.devtools.v120.network.model.Request;
 import org.openqa.selenium.devtools.v120.network.model.RequestId;
 import org.openqa.selenium.devtools.v120.network.model.Response;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,22 +34,13 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 import java.util.*;
-
-import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
-import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
 
 
 @BaseTest
 public class DriverFactory {
 
-    @Value("${device}")
-    private String device;
-    @Value("${device.size}")
-    private String deviceSize;
     private static ChromeDriver chromeDriver;
     private static FirefoxDriver firefoxDriver;
     private EdgeDriver edgeDriver;
@@ -61,33 +51,10 @@ public class DriverFactory {
     private ChromeOptions chromeOptions;
     private FirefoxProfile firefoxProfile;
     private FirefoxOptions firefoxOptions;
-    //    @Value("${android.location}")
-//    private String Location;
-    @Value("${maxPageLoadTime}")
-    private int maxPageLoadTime;
-    @Value("${android.name}")
-    private String androidName;
-    @Value("${android.headless}")
-    private boolean androidHeadless;
-    @Value("${android.package}")
-    private String androidPackage;
-    @Value("${android.activity}")
-    private String androidActivity;
-    @Value("${ios.name}")
-    private String iosName;
-    @Value("${ios.headless}")
-    private boolean iosHeadless;
-    @Value("${ios.platform}")
-    private String iosPlatform;
-    @Value("${android.udid}")
-    private String androidUdid;
-    @Value("${ios.udid}")
-    private String iosUdid;
-
-
+    @Autowired
+    private PropertiesReader propertiesReader;
     @Autowired
     private AppiumServer server;
-
     @Autowired
     private AppDistribution appDistribution;
 
@@ -190,8 +157,8 @@ public class DriverFactory {
 //        options.addArguments("--disable-dev-shm-usage");
 //        options.setBrowserVersion("91.0");
         UiAutomator2Options androidCapabilities = new UiAutomator2Options()
-                .setDeviceName(androidName)
-                .setIsHeadless(androidHeadless)
+                .setDeviceName(propertiesReader.getAndroidName())
+                .setIsHeadless(propertiesReader.isDeviceHeadless())
                 .setPlatformName("Android")
                 .withBrowserName("Chrome")
                 .setNewCommandTimeout(Duration.ofMinutes(3));
@@ -209,7 +176,7 @@ public class DriverFactory {
         Map<String, Object> firefoxOptions1 = new HashMap<>();
         firefoxOptions1.put("androidPackage", "org.mozilla.firefox");
         firefoxOptions1.put("androidActivity", "org.mozilla.gecko.BrowserApp");
-        firefoxOptions1.put("androidDeviceSerial", androidUdid);
+        firefoxOptions1.put("androidDeviceSerial", propertiesReader.getAndroidUdid());
         GeckoOptions androidFirefoxCapabilities = new GeckoOptions()
                 .setAutomationName("Gecko")
                 .setPlatformName("mac")
@@ -226,15 +193,15 @@ public class DriverFactory {
         server.getAppiumService().start();
         server.getAppiumService().clearOutPutStreams();
         UiAutomator2Options desiredCapabilities = new UiAutomator2Options()
-                .setDeviceName(androidName)
-                .setIsHeadless(androidHeadless)
+                .setDeviceName(propertiesReader.getAndroidName())
+                .setIsHeadless(propertiesReader.isDeviceHeadless())
                 .setAdbExecTimeout(Duration.ofSeconds(120))
-                .setUdid(androidUdid)
+                .setUdid(propertiesReader.getAndroidUdid())
                 .setPlatformName("Android")
-                .setApp(appDistribution.releaseBinary)
+                .setApp(appDistribution.getReleaseBinary())
                 .setNewCommandTimeout(Duration.ofSeconds(1000))
-                .setAppActivity(androidActivity)
-                .setAppPackage(androidPackage)
+                .setAppActivity(propertiesReader.getAndroidActivity())
+                .setAppPackage(propertiesReader.getAndroidPackage())
                 .gpsEnabled()
                 .autoGrantPermissions();
         androidDriver = new AndroidDriver(server.getAppiumService().getUrl(), desiredCapabilities);
@@ -242,16 +209,16 @@ public class DriverFactory {
     }
 
     @Bean
-    @ConditionalOnProperty(name = "device", havingValue = "iosSafari")
+    @ConditionalOnProperty(name = "device", havingValue = "safari_ios")
     @Primary
     public SelfHealingDriver iosSafariDriver() {
         if (server.getAppiumService().isRunning()) server.getAppiumService().stop();
         server.getAppiumService().start();
         server.getAppiumService().clearOutPutStreams();
         XCUITestOptions iosCapabilities = new XCUITestOptions()
-                .setDeviceName(iosName)
-                .setIsHeadless(iosHeadless)
-                .setPlatformVersion(iosPlatform)
+                .setDeviceName(propertiesReader.getIosName())
+                .setIsHeadless(propertiesReader.isDeviceHeadless())
+                .setPlatformVersion(propertiesReader.getIosPlatform())
                 .withBrowserName("Safari")
                 .setPlatformName("IOS");
         iosDriver = new IOSDriver(server.getAppiumService().getUrl(), iosCapabilities);
@@ -266,10 +233,10 @@ public class DriverFactory {
         server.getAppiumService().start();
         server.getAppiumService().clearOutPutStreams();
         XCUITestOptions desiredCapabilities = new XCUITestOptions()
-                .setDeviceName(iosName)
-                .setUdid(iosUdid)
-                .setIsHeadless(iosHeadless)
-                .setPlatformVersion(iosPlatform)
+                .setDeviceName(propertiesReader.getIosName())
+                .setUdid(propertiesReader.getIosUdid())
+                .setIsHeadless(propertiesReader.isDeviceHeadless())
+                .setPlatformVersion(propertiesReader.getIosPlatform())
                 .setPlatformName("IOS");
         iosDriver = new IOSDriver(server.getAppiumService().getUrl(), desiredCapabilities);
         return SelfHealingDriver.create(iosDriver);
@@ -357,12 +324,12 @@ public class DriverFactory {
     }
 
     private void browserConfig(WebDriver driver) {
-        if (maxPageLoadTime > 0) {
-            setMaxPageLoadTimeMethod(maxPageLoadTime, driver);
+        if (propertiesReader.getMaxPageLoadTime() > 0) {
+            setMaxPageLoadTimeMethod(propertiesReader.getMaxPageLoadTime(), driver);
         }
-        if (!device.toLowerCase().contains("android") || !device.toLowerCase().contains("ios")) {
+        if (!propertiesReader.getDevice().toLowerCase().contains("android") || !propertiesReader.getDevice().toLowerCase().contains("ios")) {
             try {
-                switch (deviceSize) {
+                switch (propertiesReader.getDeviceSize()) {
                     case "auto" -> driver.manage().window().maximize();
                     case "QHD" -> {
                         Dimension dimension = new Dimension(2560, 1440);

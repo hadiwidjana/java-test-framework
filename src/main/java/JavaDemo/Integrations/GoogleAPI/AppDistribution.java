@@ -3,6 +3,7 @@ package JavaDemo.Integrations.GoogleAPI;
 import JavaDemo.Integrations.Logger.Log;
 import JavaDemo.Integrations.SpringBoot.BaseTest;
 import JavaDemo.Integrations.Encryption.Encryption;
+import JavaDemo.Integrations.SpringBoot.PropertiesReader;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.path.json.JsonPath;
@@ -16,6 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.FileReader;
@@ -33,69 +35,39 @@ public class AppDistribution {
     private WebDriver webDriver;
     private String clientId;
     private String clientSecret;
-
-    @Value("${redirectUri}")
-    private String redirectUri;
-    @Value("${google.cloud.scope}")
-    private String scope;
-    @Value("${google.email}")
-    private String username;
-    @Value("${google.password}")
-    private String password;
     private String authURL;
     private String browserCode[];
-    @Value("${google.auth.uri}")
-    private String baseUri;
-    @Value("${google.auth.path}")
-    private String resource;
-    @Value("${google.header.responsetype}")
-    private String responseType;
-    @Value("${google.header.type}")
-    private String state;
     public URL releaseBinary;
-
-    @Value("${android.google.project.id}")
-    private String androidProjectId;
-    @Value("${android.google.app.id}")
-    private String androidAppId;
-    @Value("${android.google.release.id}")
-    private String androidReleaseId;
-    @Value("${android.drive.url}")
-    private String androidDriveLink;
-    @Value("${ios.google.project.id}")
-    private String iosProjectId;
-    @Value("${ios.google.app.id}")
-    private String iosAppId;
-    @Value("${ios.google.release.id}")
-    private String iosReleaseId;
-    @Value("${device}")
-    private String device;
+    @Autowired
+    private PropertiesReader pr;
 
     @PostConstruct
     public void initAppDistribution() throws Exception {
 //        getBearerAccessToken();
         refreshToken();
-        switch (device){
+        switch (pr.getDevice()){
             case "android","android_emulator"->{
-                if (!androidDriveLink.equals("")) releaseBinary=new URL(androidDriveLink);
-                else if (androidReleaseId.equals("")) releaseBinary=getReleaseLatest(androidProjectId,androidAppId);
-                else releaseBinary=getRelease(androidProjectId,androidAppId,androidReleaseId);
+                if (!pr.getAndroidDriveLink().equals("")) releaseBinary=new URL(pr.getAndroidDriveLink());
+                else if (pr.getAndroidReleaseId().equals("")) releaseBinary=getReleaseLatest(pr.getAndroidProjectId(),pr.getAndroidAppId());
+                else releaseBinary=getRelease(pr.getAndroidProjectId(),pr.getAndroidAppId(),pr.getAndroidReleaseId());
             }
             case "ios","ios_emulator"->{
-                if(iosReleaseId.equals("")) releaseBinary=getReleaseLatest(iosProjectId,iosAppId);
-                else releaseBinary=getRelease(iosProjectId,iosAppId,iosReleaseId);
+                if(pr.getIosReleaseId().equals("")) releaseBinary=getReleaseLatest(pr.getIosProjectId(),pr.getIosAppId());
+                else releaseBinary=getRelease(pr.getIosProjectId(),pr.getIosAppId(),pr.getIosReleaseId());
             }
             default -> {}
         }
     }
 
-
+    public URL getReleaseBinary(){
+        return releaseBinary;
+    }
 
     private void initDriver() throws IOException, ParseException {
         getCredential();
         webDriver = new ChromeDriver();
-        authURL = baseUri+resource+"?scope="+scope+"&auth_url="+baseUri+resource+"&client_id="+clientId+
-                "&response_type="+responseType+"&redirect_uri="+redirectUri+"&state="+state;
+        authURL = pr.getGoogleAuthUri()+pr.getGoogleAuthPath()+"?scope="+pr.getGoogleCloudScope()+"&auth_url="+pr.getGoogleAuthUri()+pr.getGoogleAuthPath()+"&client_id="+clientId+
+                "&response_type="+pr.getGoogleHeaderResponsetype()+"&redirect_uri="+pr.getGoogleRedirectUri()+"&state="+pr.getGoogleHeaderType();
         System.out.println(authURL);
     }
 
@@ -109,14 +81,13 @@ public class AppDistribution {
         clientSecret = installed.get("client_secret").toString();
     }
 
-
     private void getCodeThroughBrowserAuthentication() throws Exception {
         initDriver();
         webDriver.get(authURL);
-        webDriver.findElement(By.cssSelector("input[type='email']")).sendKeys(Encryption.decryptData(username));
+        webDriver.findElement(By.cssSelector("input[type='email']")).sendKeys(Encryption.decryptData(pr.getGoogleEmail()));
         webDriver.findElement(By.xpath("//span[text()='Next']")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.cssSelector("input[type='password']")).sendKeys(Encryption.decryptData(password));
+        webDriver.findElement(By.cssSelector("input[type='password']")).sendKeys(Encryption.decryptData(pr.getGooglePassword()));
         webDriver.findElement(By.xpath("//span[text()='Next']")).click();
         Thread.sleep(3000);
         try {
@@ -138,7 +109,7 @@ public class AppDistribution {
                 .queryParam("code","4/0AfJohXlWkvrD7ROlQxz9eM9mV5vexg_YMUTMfO6-WKt5krCMkOwBBSAEVR_GMY3JvyitmA")
                 .queryParam("client_id", clientId)
                 .queryParam("client_secret", clientSecret)
-                .queryParam("redirect_uri", redirectUri)
+                .queryParam("redirect_uri", pr.getGoogleRedirectUri())
                 .queryParam("grant_type","authorization_code").
                 when()
                 .post("/oauth2/v4/token").
