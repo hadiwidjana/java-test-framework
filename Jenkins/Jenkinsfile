@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven393'
+    }
+    stages {
+        stage('Clean Build') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+        stage('Java Demo') {
+            steps {
+                wrap([$class: 'Xvfb', additionalOptions: '', assignedLabels: '', autoDisplayName: true, debug: true, displayNameOffset: 0, installationName: 'xvfb', parallelBuild: true, screen: '1920x1080x24', timeout: 25]) {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        sh 'mvn test -Dsurefire.suiteXmlFiles=TestRunner/testng.xml -Drecord.mode=on -Dbranch=$GIT_BRANCH -Djob=$BUILD_NUMBER -Dcommit=$GIT_COMMIT -Ddevice=chrome -Dspring.profiles.active=eproc-development -Dslack.notif=on -Dnetlify.deploy=off -Ddevice.size=auto -Djob.url=$BUILD_URL'
+                    }
+                }
+            }
+        }
+        stage('Generate Report') {
+            steps {
+                script {
+                    allure([
+                            includeProperties: false,
+                            jdk              : '',
+                            properties       : [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results          : [[path: 'allure-results']]
+                    ])
+                }
+            }
+        }
+        stage('Teardown') {
+            steps {
+                sh 'rm -r allure-results'
+            }
+        }
+    }
+}

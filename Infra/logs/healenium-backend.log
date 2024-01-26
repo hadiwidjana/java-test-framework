@@ -1,0 +1,383 @@
+2024-01-25 11:29:41.986  INFO 1 - [hutdownHook] ontainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 11:29:42.242  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown initiated... 
+2024-01-25 11:29:42.284  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown completed. 
+2024-01-25 11:32:03.591  INFO 1 - [       main] c.epam.healenium.Application     : Starting Application using Java 17.0.9 with PID 1 (/healenium-backend.jar started by root in /) 
+2024-01-25 11:32:03.629  INFO 1 - [       main] c.epam.healenium.Application     : No active profile set, falling back to 1 default profile: "default" 
+2024-01-25 11:32:14.645  INFO 1 - [       main] .RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-01-25 11:32:15.829  INFO 1 - [       main] .RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1076 ms. Found 4 JPA repository interfaces. 
+2024-01-25 11:32:22.600  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat initialized with port 7878 (http) 
+2024-01-25 11:32:22.665  INFO 1 - [       main] o.a.c.core.StandardService       : Starting service [Tomcat] 
+2024-01-25 11:32:22.667  INFO 1 - [       main] o.a.c.core.StandardEngine        : Starting Servlet engine: [Apache Tomcat/10.1.17] 
+2024-01-25 11:32:22.872  INFO 1 - [       main] o.a.c.c.C.[.[localhost].[/]      : Initializing Spring embedded WebApplicationContext 
+2024-01-25 11:32:22.875  INFO 1 - [       main] rvletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 18405 ms 
+2024-01-25 11:32:24.846  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Starting... 
+2024-01-25 11:32:25.501  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Start completed. 
+2024-01-25 11:32:25.893  INFO 1 - [       main] liquibase.database               : Set default schema name to healenium 
+2024-01-25 11:32:29.330  INFO 1 - [       main] liquibase.changelog              : Creating database history table with name: healenium.databasechangelog 
+2024-01-25 11:32:29.502  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 11:32:30.191  INFO 1 - [       main] liquibase.lockservice            : Successfully acquired change log lock 
+2024-01-25 11:32:30.208  INFO 1 - [       main] liquibase.command                : Using deploymentId: 6171550205 
+2024-01-25 11:32:30.219  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 11:32:30.353  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/001_createSequence.xml::3::nkobzev 
+2024-01-25 11:32:30.377  INFO 1 - [       main] liquibase.changelog              : Sequence healing_result_seq created 
+2024-01-25 11:32:30.382  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/001_createSequence.xml::3::nkobzev ran successfully in 23ms 
+2024-01-25 11:32:30.412  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::5::nkobzev 
+2024-01-25 11:32:30.432  INFO 1 - [       main] liquibase.changelog              : Table SELECTOR created 
+2024-01-25 11:32:30.435  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::5::nkobzev ran successfully in 18ms 
+2024-01-25 11:32:30.447  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::6::nkobzev 
+2024-01-25 11:32:30.536  INFO 1 - [       main] liquibase.changelog              : Index SELECTOR_PK created 
+2024-01-25 11:32:30.540  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::6::nkobzev ran successfully in 91ms 
+2024-01-25 11:32:30.553  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::7::nkobzev 
+2024-01-25 11:32:30.570  INFO 1 - [       main] liquibase.changelog              : Table HEALING created 
+2024-01-25 11:32:30.573  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::7::nkobzev ran successfully in 17ms 
+2024-01-25 11:32:30.582  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::8::nkobzev 
+2024-01-25 11:32:30.614  INFO 1 - [       main] liquibase.changelog              : Index HEALING_PK created 
+2024-01-25 11:32:30.626  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING (SELECTOR_ID) 
+2024-01-25 11:32:30.629  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::8::nkobzev ran successfully in 45ms 
+2024-01-25 11:32:30.651  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::9::nkobzev 
+2024-01-25 11:32:30.688  INFO 1 - [       main] liquibase.changelog              : Table HEALING_RESULT created 
+2024-01-25 11:32:30.690  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::9::nkobzev ran successfully in 32ms 
+2024-01-25 11:32:30.703  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::10::nkobzev 
+2024-01-25 11:32:30.743  INFO 1 - [       main] liquibase.changelog              : Index HEALING_RESULT_PK created 
+2024-01-25 11:32:30.749  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING_RESULT (HEALING_ID) 
+2024-01-25 11:32:30.752  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::10::nkobzev ran successfully in 46ms 
+2024-01-25 11:32:30.766  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::11::nkobzev 
+2024-01-25 11:32:30.780  INFO 1 - [       main] liquibase.changelog              : Table REPORT created 
+2024-01-25 11:32:30.783  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::11::nkobzev ran successfully in 14ms 
+2024-01-25 11:32:30.802  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::12::nkobzev 
+2024-01-25 11:32:30.839  INFO 1 - [       main] liquibase.changelog              : Index REPORT_PK created 
+2024-01-25 11:32:30.841  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::12::nkobzev ran successfully in 33ms 
+2024-01-25 11:32:30.850  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/006_command_and_healingenable_column.xml::13::nkobzev 
+2024-01-25 11:32:30.858  INFO 1 - [       main] liquibase.changelog              : Columns COMMAND(VARCHAR(264)),ENABLE_HEALING(BOOLEAN) added to SELECTOR 
+2024-01-25 11:32:30.860  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/006_command_and_healingenable_column.xml::13::nkobzev ran successfully in 8ms 
+2024-01-25 11:32:30.890  INFO 1 - [       main] liquibase.util                   : UPDATE SUMMARY 
+2024-01-25 11:32:30.896  INFO 1 - [       main] liquibase.util                   : Run:                         10 
+2024-01-25 11:32:30.896  INFO 1 - [       main] liquibase.util                   : Previously run:               0 
+2024-01-25 11:32:30.897  INFO 1 - [       main] liquibase.util                   : Filtered out:                 0 
+2024-01-25 11:32:30.898  INFO 1 - [       main] liquibase.util                   : ------------------------------- 
+2024-01-25 11:32:30.924  INFO 1 - [       main] liquibase.util                   : Total change sets:           10 
+2024-01-25 11:32:30.926  INFO 1 - [       main] liquibase.util                   : Update summary generated 
+2024-01-25 11:32:30.939  INFO 1 - [       main] liquibase.command                : Update command completed successfully. 
+2024-01-25 11:32:30.943  INFO 1 - [       main] liquibase.ui                     : Liquibase: Update has been successful. Rows affected: 10 
+2024-01-25 11:32:30.952  INFO 1 - [       main] liquibase.lockservice            : Successfully released change log lock 
+2024-01-25 11:32:30.954  INFO 1 - [       main] liquibase.command                : Command execution complete 
+2024-01-25 11:32:32.159  INFO 1 - [       main] o.h.j.internal.util.LogHelper    : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-01-25 11:32:32.495  INFO 1 - [       main] org.hibernate.Version            : HHH000412: Hibernate ORM core version 6.4.1.Final 
+2024-01-25 11:32:32.631  INFO 1 - [       main] o.h.c.i.RegionFactoryInitiator   : HHH000026: Second-level cache disabled 
+2024-01-25 11:32:33.814  INFO 1 - [       main] .o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-01-25 11:32:33.990  WARN 1 - [       main] org.hibernate.orm.deprecation    : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-01-25 11:32:39.585  WARN 1 - [       main] o.h.m.internal.MetadataContext   : HHH015011: Unable to locate static metamodel field : com.epam.healenium.model.domain.Selector_#nodePathWrapper; this may or may not indicate a problem with the static metamodel 
+2024-01-25 11:32:39.625  INFO 1 - [       main] h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-01-25 11:32:39.646  INFO 1 - [       main] ontainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 11:32:44.043  INFO 1 - [       main] o.s.d.j.r.q.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-01-25 11:32:48.246  INFO 1 - [       main] .a.w.s.WelcomePageHandlerMapping : Adding welcome page template: index 
+2024-01-25 11:32:51.689  INFO 1 - [       main] .s.b.a.e.w.EndpointLinksResolver : Exposing 1 endpoint(s) beneath base path '/actuator' 
+2024-01-25 11:32:52.113  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat started on port 7878 (http) with context path '' 
+2024-01-25 11:32:52.592  INFO 1 - [       main] c.epam.healenium.Application     : Started Application in 56.386 seconds (process running for 64.031) 
+2024-01-25 11:37:06.167  INFO 1 - [hutdownHook] ontainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 11:37:06.242  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown initiated... 
+2024-01-25 11:37:06.335  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown completed. 
+2024-01-25 11:39:04.306  INFO 1 - [       main] c.epam.healenium.Application     : Starting Application using Java 17.0.9 with PID 1 (/healenium-backend.jar started by root in /) 
+2024-01-25 11:39:04.358  INFO 1 - [       main] c.epam.healenium.Application     : No active profile set, falling back to 1 default profile: "default" 
+2024-01-25 11:39:14.271  INFO 1 - [       main] .RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-01-25 11:39:15.500  INFO 1 - [       main] .RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1185 ms. Found 4 JPA repository interfaces. 
+2024-01-25 11:39:23.040  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat initialized with port 7878 (http) 
+2024-01-25 11:39:23.106  INFO 1 - [       main] o.a.c.core.StandardService       : Starting service [Tomcat] 
+2024-01-25 11:39:23.108  INFO 1 - [       main] o.a.c.core.StandardEngine        : Starting Servlet engine: [Apache Tomcat/10.1.17] 
+2024-01-25 11:39:23.331  INFO 1 - [       main] o.a.c.c.C.[.[localhost].[/]      : Initializing Spring embedded WebApplicationContext 
+2024-01-25 11:39:23.334  INFO 1 - [       main] rvletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 18323 ms 
+2024-01-25 11:39:25.271  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Starting... 
+2024-01-25 11:39:25.924  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Start completed. 
+2024-01-25 11:39:26.381  INFO 1 - [       main] liquibase.database               : Set default schema name to healenium 
+2024-01-25 11:39:29.843  INFO 1 - [       main] liquibase.changelog              : Creating database history table with name: healenium.databasechangelog 
+2024-01-25 11:39:29.968  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 11:39:30.565  INFO 1 - [       main] liquibase.lockservice            : Successfully acquired change log lock 
+2024-01-25 11:39:30.578  INFO 1 - [       main] liquibase.command                : Using deploymentId: 6171970575 
+2024-01-25 11:39:30.585  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 11:39:30.698  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/001_createSequence.xml::3::nkobzev 
+2024-01-25 11:39:30.718  INFO 1 - [       main] liquibase.changelog              : Sequence healing_result_seq created 
+2024-01-25 11:39:30.725  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/001_createSequence.xml::3::nkobzev ran successfully in 20ms 
+2024-01-25 11:39:30.758  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::5::nkobzev 
+2024-01-25 11:39:30.776  INFO 1 - [       main] liquibase.changelog              : Table SELECTOR created 
+2024-01-25 11:39:30.779  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::5::nkobzev ran successfully in 18ms 
+2024-01-25 11:39:30.800  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::6::nkobzev 
+2024-01-25 11:39:30.879  INFO 1 - [       main] liquibase.changelog              : Index SELECTOR_PK created 
+2024-01-25 11:39:30.883  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::6::nkobzev ran successfully in 80ms 
+2024-01-25 11:39:30.904  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::7::nkobzev 
+2024-01-25 11:39:30.921  INFO 1 - [       main] liquibase.changelog              : Table HEALING created 
+2024-01-25 11:39:30.923  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::7::nkobzev ran successfully in 14ms 
+2024-01-25 11:39:30.932  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::8::nkobzev 
+2024-01-25 11:39:30.974  INFO 1 - [       main] liquibase.changelog              : Index HEALING_PK created 
+2024-01-25 11:39:30.987  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING (SELECTOR_ID) 
+2024-01-25 11:39:30.989  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::8::nkobzev ran successfully in 56ms 
+2024-01-25 11:39:31.016  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::9::nkobzev 
+2024-01-25 11:39:31.050  INFO 1 - [       main] liquibase.changelog              : Table HEALING_RESULT created 
+2024-01-25 11:39:31.052  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::9::nkobzev ran successfully in 29ms 
+2024-01-25 11:39:31.067  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::10::nkobzev 
+2024-01-25 11:39:31.101  INFO 1 - [       main] liquibase.changelog              : Index HEALING_RESULT_PK created 
+2024-01-25 11:39:31.111  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING_RESULT (HEALING_ID) 
+2024-01-25 11:39:31.113  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::10::nkobzev ran successfully in 43ms 
+2024-01-25 11:39:31.131  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::11::nkobzev 
+2024-01-25 11:39:31.141  INFO 1 - [       main] liquibase.changelog              : Table REPORT created 
+2024-01-25 11:39:31.144  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::11::nkobzev ran successfully in 12ms 
+2024-01-25 11:39:31.155  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::12::nkobzev 
+2024-01-25 11:39:31.192  INFO 1 - [       main] liquibase.changelog              : Index REPORT_PK created 
+2024-01-25 11:39:31.195  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::12::nkobzev ran successfully in 39ms 
+2024-01-25 11:39:31.211  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/006_command_and_healingenable_column.xml::13::nkobzev 
+2024-01-25 11:39:31.226  INFO 1 - [       main] liquibase.changelog              : Columns COMMAND(VARCHAR(264)),ENABLE_HEALING(BOOLEAN) added to SELECTOR 
+2024-01-25 11:39:31.228  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/006_command_and_healingenable_column.xml::13::nkobzev ran successfully in 14ms 
+2024-01-25 11:39:31.259  INFO 1 - [       main] liquibase.util                   : UPDATE SUMMARY 
+2024-01-25 11:39:31.260  INFO 1 - [       main] liquibase.util                   : Run:                         10 
+2024-01-25 11:39:31.261  INFO 1 - [       main] liquibase.util                   : Previously run:               0 
+2024-01-25 11:39:31.262  INFO 1 - [       main] liquibase.util                   : Filtered out:                 0 
+2024-01-25 11:39:31.263  INFO 1 - [       main] liquibase.util                   : ------------------------------- 
+2024-01-25 11:39:31.264  INFO 1 - [       main] liquibase.util                   : Total change sets:           10 
+2024-01-25 11:39:31.266  INFO 1 - [       main] liquibase.util                   : Update summary generated 
+2024-01-25 11:39:31.279  INFO 1 - [       main] liquibase.command                : Update command completed successfully. 
+2024-01-25 11:39:31.281  INFO 1 - [       main] liquibase.ui                     : Liquibase: Update has been successful. Rows affected: 10 
+2024-01-25 11:39:31.290  INFO 1 - [       main] liquibase.lockservice            : Successfully released change log lock 
+2024-01-25 11:39:31.293  INFO 1 - [       main] liquibase.command                : Command execution complete 
+2024-01-25 11:39:32.984  INFO 1 - [       main] o.h.j.internal.util.LogHelper    : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-01-25 11:39:33.222  INFO 1 - [       main] org.hibernate.Version            : HHH000412: Hibernate ORM core version 6.4.1.Final 
+2024-01-25 11:39:33.364  INFO 1 - [       main] o.h.c.i.RegionFactoryInitiator   : HHH000026: Second-level cache disabled 
+2024-01-25 11:39:34.490  INFO 1 - [       main] .o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-01-25 11:39:34.687  WARN 1 - [       main] org.hibernate.orm.deprecation    : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-01-25 11:39:39.990  WARN 1 - [       main] o.h.m.internal.MetadataContext   : HHH015011: Unable to locate static metamodel field : com.epam.healenium.model.domain.Selector_#nodePathWrapper; this may or may not indicate a problem with the static metamodel 
+2024-01-25 11:39:40.023  INFO 1 - [       main] h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-01-25 11:39:40.044  INFO 1 - [       main] ontainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 11:39:44.661  INFO 1 - [       main] o.s.d.j.r.q.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-01-25 11:39:49.035  INFO 1 - [       main] .a.w.s.WelcomePageHandlerMapping : Adding welcome page template: index 
+2024-01-25 11:39:52.906  INFO 1 - [       main] .s.b.a.e.w.EndpointLinksResolver : Exposing 1 endpoint(s) beneath base path '/actuator' 
+2024-01-25 11:39:53.534  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat started on port 7878 (http) with context path '' 
+2024-01-25 11:39:54.611  INFO 1 - [       main] c.epam.healenium.Application     : Started Application in 56.049 seconds (process running for 63.562) 
+2024-01-25 11:42:23.666  INFO 1 - [hutdownHook] ontainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 11:42:23.741  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown initiated... 
+2024-01-25 11:42:23.791  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown completed. 
+2024-01-25 11:45:23.714  INFO 1 - [       main] c.epam.healenium.Application     : Starting Application using Java 17.0.9 with PID 1 (/healenium-backend.jar started by root in /) 
+2024-01-25 11:45:23.756  INFO 1 - [       main] c.epam.healenium.Application     : No active profile set, falling back to 1 default profile: "default" 
+2024-01-25 11:45:34.298  INFO 1 - [       main] .RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-01-25 11:45:35.294  INFO 1 - [       main] .RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 956 ms. Found 4 JPA repository interfaces. 
+2024-01-25 11:45:41.271  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat initialized with port 7878 (http) 
+2024-01-25 11:45:41.324  INFO 1 - [       main] o.a.c.core.StandardService       : Starting service [Tomcat] 
+2024-01-25 11:45:41.327  INFO 1 - [       main] o.a.c.core.StandardEngine        : Starting Servlet engine: [Apache Tomcat/10.1.17] 
+2024-01-25 11:45:41.537  INFO 1 - [       main] o.a.c.c.C.[.[localhost].[/]      : Initializing Spring embedded WebApplicationContext 
+2024-01-25 11:45:41.539  INFO 1 - [       main] rvletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 16507 ms 
+2024-01-25 11:45:45.032  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Starting... 
+2024-01-25 11:45:46.371  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Start completed. 
+2024-01-25 11:45:48.294  INFO 1 - [       main] liquibase.database               : Set default schema name to healenium 
+2024-01-25 11:45:53.680  INFO 1 - [       main] liquibase.changelog              : Creating database history table with name: healenium.databasechangelog 
+2024-01-25 11:45:53.832  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 11:45:54.435  INFO 1 - [       main] liquibase.lockservice            : Successfully acquired change log lock 
+2024-01-25 11:45:54.451  INFO 1 - [       main] liquibase.command                : Using deploymentId: 6172354447 
+2024-01-25 11:45:54.463  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 11:45:54.700  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/001_createSequence.xml::3::nkobzev 
+2024-01-25 11:45:54.729  INFO 1 - [       main] liquibase.changelog              : Sequence healing_result_seq created 
+2024-01-25 11:45:54.736  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/001_createSequence.xml::3::nkobzev ran successfully in 28ms 
+2024-01-25 11:45:54.765  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::5::nkobzev 
+2024-01-25 11:45:54.782  INFO 1 - [       main] liquibase.changelog              : Table SELECTOR created 
+2024-01-25 11:45:54.785  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::5::nkobzev ran successfully in 18ms 
+2024-01-25 11:45:54.800  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::6::nkobzev 
+2024-01-25 11:45:54.888  INFO 1 - [       main] liquibase.changelog              : Index SELECTOR_PK created 
+2024-01-25 11:45:54.892  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::6::nkobzev ran successfully in 90ms 
+2024-01-25 11:45:54.903  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::7::nkobzev 
+2024-01-25 11:45:54.917  INFO 1 - [       main] liquibase.changelog              : Table HEALING created 
+2024-01-25 11:45:54.919  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::7::nkobzev ran successfully in 15ms 
+2024-01-25 11:45:54.928  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::8::nkobzev 
+2024-01-25 11:45:54.962  INFO 1 - [       main] liquibase.changelog              : Index HEALING_PK created 
+2024-01-25 11:45:54.976  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING (SELECTOR_ID) 
+2024-01-25 11:45:54.979  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::8::nkobzev ran successfully in 49ms 
+2024-01-25 11:45:55.001  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::9::nkobzev 
+2024-01-25 11:45:55.031  INFO 1 - [       main] liquibase.changelog              : Table HEALING_RESULT created 
+2024-01-25 11:45:55.036  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::9::nkobzev ran successfully in 30ms 
+2024-01-25 11:45:55.050  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::10::nkobzev 
+2024-01-25 11:45:55.090  INFO 1 - [       main] liquibase.changelog              : Index HEALING_RESULT_PK created 
+2024-01-25 11:45:55.097  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING_RESULT (HEALING_ID) 
+2024-01-25 11:45:55.100  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::10::nkobzev ran successfully in 48ms 
+2024-01-25 11:45:55.116  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::11::nkobzev 
+2024-01-25 11:45:55.127  INFO 1 - [       main] liquibase.changelog              : Table REPORT created 
+2024-01-25 11:45:55.129  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::11::nkobzev ran successfully in 12ms 
+2024-01-25 11:45:55.142  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::12::nkobzev 
+2024-01-25 11:45:55.174  INFO 1 - [       main] liquibase.changelog              : Index REPORT_PK created 
+2024-01-25 11:45:55.176  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::12::nkobzev ran successfully in 29ms 
+2024-01-25 11:45:55.184  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/006_command_and_healingenable_column.xml::13::nkobzev 
+2024-01-25 11:45:55.191  INFO 1 - [       main] liquibase.changelog              : Columns COMMAND(VARCHAR(264)),ENABLE_HEALING(BOOLEAN) added to SELECTOR 
+2024-01-25 11:45:55.193  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/006_command_and_healingenable_column.xml::13::nkobzev ran successfully in 8ms 
+2024-01-25 11:45:55.222  INFO 1 - [       main] liquibase.util                   : UPDATE SUMMARY 
+2024-01-25 11:45:55.223  INFO 1 - [       main] liquibase.util                   : Run:                         10 
+2024-01-25 11:45:55.225  INFO 1 - [       main] liquibase.util                   : Previously run:               0 
+2024-01-25 11:45:55.226  INFO 1 - [       main] liquibase.util                   : Filtered out:                 0 
+2024-01-25 11:45:55.229  INFO 1 - [       main] liquibase.util                   : ------------------------------- 
+2024-01-25 11:45:55.230  INFO 1 - [       main] liquibase.util                   : Total change sets:           10 
+2024-01-25 11:45:55.232  INFO 1 - [       main] liquibase.util                   : Update summary generated 
+2024-01-25 11:45:55.247  INFO 1 - [       main] liquibase.command                : Update command completed successfully. 
+2024-01-25 11:45:55.251  INFO 1 - [       main] liquibase.ui                     : Liquibase: Update has been successful. Rows affected: 10 
+2024-01-25 11:45:55.267  INFO 1 - [       main] liquibase.lockservice            : Successfully released change log lock 
+2024-01-25 11:45:55.271  INFO 1 - [       main] liquibase.command                : Command execution complete 
+2024-01-25 11:45:55.974  INFO 1 - [       main] o.h.j.internal.util.LogHelper    : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-01-25 11:45:56.231  INFO 1 - [       main] org.hibernate.Version            : HHH000412: Hibernate ORM core version 6.4.1.Final 
+2024-01-25 11:45:56.399  INFO 1 - [       main] o.h.c.i.RegionFactoryInitiator   : HHH000026: Second-level cache disabled 
+2024-01-25 11:45:57.579  INFO 1 - [       main] .o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-01-25 11:45:58.008  WARN 1 - [       main] org.hibernate.orm.deprecation    : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-01-25 11:46:02.958  WARN 1 - [       main] o.h.m.internal.MetadataContext   : HHH015011: Unable to locate static metamodel field : com.epam.healenium.model.domain.Selector_#nodePathWrapper; this may or may not indicate a problem with the static metamodel 
+2024-01-25 11:46:02.992  INFO 1 - [       main] h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-01-25 11:46:03.010  INFO 1 - [       main] ontainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 11:46:06.292  INFO 1 - [       main] o.s.d.j.r.q.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-01-25 11:46:11.408  INFO 1 - [       main] .a.w.s.WelcomePageHandlerMapping : Adding welcome page template: index 
+2024-01-25 11:46:15.150  INFO 1 - [       main] .s.b.a.e.w.EndpointLinksResolver : Exposing 1 endpoint(s) beneath base path '/actuator' 
+2024-01-25 11:46:15.545  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat started on port 7878 (http) with context path '' 
+2024-01-25 11:46:16.010  INFO 1 - [       main] c.epam.healenium.Application     : Started Application in 59.627 seconds (process running for 66.762) 
+2024-01-25 11:46:23.611  INFO 1 - [hutdownHook] ontainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 11:46:23.680  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown initiated... 
+2024-01-25 11:46:23.750  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown completed. 
+2024-01-25 11:51:06.916  INFO 1 - [       main] c.epam.healenium.Application     : Starting Application using Java 17.0.9 with PID 1 (/healenium-backend.jar started by root in /) 
+2024-01-25 11:51:06.944  INFO 1 - [       main] c.epam.healenium.Application     : No active profile set, falling back to 1 default profile: "default" 
+2024-01-25 11:51:16.253  INFO 1 - [       main] .RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-01-25 11:51:17.354  INFO 1 - [       main] .RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1051 ms. Found 4 JPA repository interfaces. 
+2024-01-25 11:51:23.541  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat initialized with port 7878 (http) 
+2024-01-25 11:51:23.599  INFO 1 - [       main] o.a.c.core.StandardService       : Starting service [Tomcat] 
+2024-01-25 11:51:23.601  INFO 1 - [       main] o.a.c.core.StandardEngine        : Starting Servlet engine: [Apache Tomcat/10.1.17] 
+2024-01-25 11:51:23.874  INFO 1 - [       main] o.a.c.c.C.[.[localhost].[/]      : Initializing Spring embedded WebApplicationContext 
+2024-01-25 11:51:23.877  INFO 1 - [       main] rvletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 16267 ms 
+2024-01-25 11:51:27.067  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Starting... 
+2024-01-25 11:51:27.826  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Start completed. 
+2024-01-25 11:51:28.323  INFO 1 - [       main] liquibase.database               : Set default schema name to healenium 
+2024-01-25 11:51:31.793  INFO 1 - [       main] liquibase.changelog              : Creating database history table with name: healenium.databasechangelog 
+2024-01-25 11:51:31.938  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 11:51:32.573  INFO 1 - [       main] liquibase.lockservice            : Successfully acquired change log lock 
+2024-01-25 11:51:32.585  INFO 1 - [       main] liquibase.command                : Using deploymentId: 6172692583 
+2024-01-25 11:51:32.596  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 11:51:32.718  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/001_createSequence.xml::3::nkobzev 
+2024-01-25 11:51:32.738  INFO 1 - [       main] liquibase.changelog              : Sequence healing_result_seq created 
+2024-01-25 11:51:32.743  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/001_createSequence.xml::3::nkobzev ran successfully in 19ms 
+2024-01-25 11:51:32.772  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::5::nkobzev 
+2024-01-25 11:51:32.792  INFO 1 - [       main] liquibase.changelog              : Table SELECTOR created 
+2024-01-25 11:51:32.794  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::5::nkobzev ran successfully in 19ms 
+2024-01-25 11:51:32.806  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::6::nkobzev 
+2024-01-25 11:51:32.920  INFO 1 - [       main] liquibase.changelog              : Index SELECTOR_PK created 
+2024-01-25 11:51:32.929  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::6::nkobzev ran successfully in 120ms 
+2024-01-25 11:51:33.006  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::7::nkobzev 
+2024-01-25 11:51:33.030  INFO 1 - [       main] liquibase.changelog              : Table HEALING created 
+2024-01-25 11:51:33.032  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::7::nkobzev ran successfully in 23ms 
+2024-01-25 11:51:33.041  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::8::nkobzev 
+2024-01-25 11:51:33.077  INFO 1 - [       main] liquibase.changelog              : Index HEALING_PK created 
+2024-01-25 11:51:33.106  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING (SELECTOR_ID) 
+2024-01-25 11:51:33.109  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::8::nkobzev ran successfully in 65ms 
+2024-01-25 11:51:33.131  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::9::nkobzev 
+2024-01-25 11:51:33.165  INFO 1 - [       main] liquibase.changelog              : Table HEALING_RESULT created 
+2024-01-25 11:51:33.168  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::9::nkobzev ran successfully in 31ms 
+2024-01-25 11:51:33.181  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::10::nkobzev 
+2024-01-25 11:51:33.216  INFO 1 - [       main] liquibase.changelog              : Index HEALING_RESULT_PK created 
+2024-01-25 11:51:33.224  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING_RESULT (HEALING_ID) 
+2024-01-25 11:51:33.227  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::10::nkobzev ran successfully in 43ms 
+2024-01-25 11:51:33.241  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::11::nkobzev 
+2024-01-25 11:51:33.251  INFO 1 - [       main] liquibase.changelog              : Table REPORT created 
+2024-01-25 11:51:33.253  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::11::nkobzev ran successfully in 10ms 
+2024-01-25 11:51:33.264  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::12::nkobzev 
+2024-01-25 11:51:33.300  INFO 1 - [       main] liquibase.changelog              : Index REPORT_PK created 
+2024-01-25 11:51:33.303  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::12::nkobzev ran successfully in 38ms 
+2024-01-25 11:51:33.311  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/006_command_and_healingenable_column.xml::13::nkobzev 
+2024-01-25 11:51:33.319  INFO 1 - [       main] liquibase.changelog              : Columns COMMAND(VARCHAR(264)),ENABLE_HEALING(BOOLEAN) added to SELECTOR 
+2024-01-25 11:51:33.321  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/006_command_and_healingenable_column.xml::13::nkobzev ran successfully in 9ms 
+2024-01-25 11:51:33.373  INFO 1 - [       main] liquibase.util                   : UPDATE SUMMARY 
+2024-01-25 11:51:33.374  INFO 1 - [       main] liquibase.util                   : Run:                         10 
+2024-01-25 11:51:33.375  INFO 1 - [       main] liquibase.util                   : Previously run:               0 
+2024-01-25 11:51:33.375  INFO 1 - [       main] liquibase.util                   : Filtered out:                 0 
+2024-01-25 11:51:33.376  INFO 1 - [       main] liquibase.util                   : ------------------------------- 
+2024-01-25 11:51:33.376  INFO 1 - [       main] liquibase.util                   : Total change sets:           10 
+2024-01-25 11:51:33.378  INFO 1 - [       main] liquibase.util                   : Update summary generated 
+2024-01-25 11:51:33.388  INFO 1 - [       main] liquibase.command                : Update command completed successfully. 
+2024-01-25 11:51:33.390  INFO 1 - [       main] liquibase.ui                     : Liquibase: Update has been successful. Rows affected: 10 
+2024-01-25 11:51:33.399  INFO 1 - [       main] liquibase.lockservice            : Successfully released change log lock 
+2024-01-25 11:51:33.401  INFO 1 - [       main] liquibase.command                : Command execution complete 
+2024-01-25 11:51:34.098  INFO 1 - [       main] o.h.j.internal.util.LogHelper    : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-01-25 11:51:34.336  INFO 1 - [       main] org.hibernate.Version            : HHH000412: Hibernate ORM core version 6.4.1.Final 
+2024-01-25 11:51:34.479  INFO 1 - [       main] o.h.c.i.RegionFactoryInitiator   : HHH000026: Second-level cache disabled 
+2024-01-25 11:51:36.334  INFO 1 - [       main] .o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-01-25 11:51:36.504  WARN 1 - [       main] org.hibernate.orm.deprecation    : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-01-25 11:51:41.287  WARN 1 - [       main] o.h.m.internal.MetadataContext   : HHH015011: Unable to locate static metamodel field : com.epam.healenium.model.domain.Selector_#nodePathWrapper; this may or may not indicate a problem with the static metamodel 
+2024-01-25 11:51:41.319  INFO 1 - [       main] h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-01-25 11:51:41.343  INFO 1 - [       main] ontainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 11:51:44.314  INFO 1 - [       main] o.s.d.j.r.q.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-01-25 11:51:48.678  INFO 1 - [       main] .a.w.s.WelcomePageHandlerMapping : Adding welcome page template: index 
+2024-01-25 11:51:52.111  INFO 1 - [       main] .s.b.a.e.w.EndpointLinksResolver : Exposing 1 endpoint(s) beneath base path '/actuator' 
+2024-01-25 11:51:52.484  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat started on port 7878 (http) with context path '' 
+2024-01-25 11:51:52.922  INFO 1 - [       main] c.epam.healenium.Application     : Started Application in 51.644 seconds (process running for 59.403) 
+2024-01-25 12:00:54.526  INFO 1 - [hutdownHook] ontainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 12:00:54.583  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown initiated... 
+2024-01-25 12:00:54.640  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown completed. 
+2024-01-25 12:22:05.233  INFO 1 - [       main] c.epam.healenium.Application     : Starting Application using Java 17.0.9 with PID 1 (/healenium-backend.jar started by root in /) 
+2024-01-25 12:22:05.272  INFO 1 - [       main] c.epam.healenium.Application     : No active profile set, falling back to 1 default profile: "default" 
+2024-01-25 12:22:14.090  INFO 1 - [       main] .RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-01-25 12:22:15.266  INFO 1 - [       main] .RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1137 ms. Found 4 JPA repository interfaces. 
+2024-01-25 12:22:22.215  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat initialized with port 7878 (http) 
+2024-01-25 12:22:22.267  INFO 1 - [       main] o.a.c.core.StandardService       : Starting service [Tomcat] 
+2024-01-25 12:22:22.269  INFO 1 - [       main] o.a.c.core.StandardEngine        : Starting Servlet engine: [Apache Tomcat/10.1.17] 
+2024-01-25 12:22:22.461  INFO 1 - [       main] o.a.c.c.C.[.[localhost].[/]      : Initializing Spring embedded WebApplicationContext 
+2024-01-25 12:22:22.464  INFO 1 - [       main] rvletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 16553 ms 
+2024-01-25 12:22:25.318  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Starting... 
+2024-01-25 12:22:25.975  INFO 1 - [       main] c.z.hikari.HikariDataSource      : HikariPool-1 - Start completed. 
+2024-01-25 12:22:26.340  INFO 1 - [       main] liquibase.database               : Set default schema name to healenium 
+2024-01-25 12:22:29.589  INFO 1 - [       main] liquibase.changelog              : Creating database history table with name: healenium.databasechangelog 
+2024-01-25 12:22:29.773  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 12:22:30.363  INFO 1 - [       main] liquibase.lockservice            : Successfully acquired change log lock 
+2024-01-25 12:22:30.380  INFO 1 - [       main] liquibase.command                : Using deploymentId: 6174550377 
+2024-01-25 12:22:30.387  INFO 1 - [       main] liquibase.changelog              : Reading from healenium.databasechangelog 
+2024-01-25 12:22:30.500  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/001_createSequence.xml::3::nkobzev 
+2024-01-25 12:22:30.520  INFO 1 - [       main] liquibase.changelog              : Sequence healing_result_seq created 
+2024-01-25 12:22:30.526  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/001_createSequence.xml::3::nkobzev ran successfully in 20ms 
+2024-01-25 12:22:30.576  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::5::nkobzev 
+2024-01-25 12:22:30.597  INFO 1 - [       main] liquibase.changelog              : Table SELECTOR created 
+2024-01-25 12:22:30.599  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::5::nkobzev ran successfully in 18ms 
+2024-01-25 12:22:30.616  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/002_selector.xml::6::nkobzev 
+2024-01-25 12:22:30.685  INFO 1 - [       main] liquibase.changelog              : Index SELECTOR_PK created 
+2024-01-25 12:22:30.688  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/002_selector.xml::6::nkobzev ran successfully in 70ms 
+2024-01-25 12:22:30.698  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::7::nkobzev 
+2024-01-25 12:22:30.712  INFO 1 - [       main] liquibase.changelog              : Table HEALING created 
+2024-01-25 12:22:30.714  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::7::nkobzev ran successfully in 14ms 
+2024-01-25 12:22:30.727  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/003_healing.xml::8::nkobzev 
+2024-01-25 12:22:30.762  INFO 1 - [       main] liquibase.changelog              : Index HEALING_PK created 
+2024-01-25 12:22:30.776  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING (SELECTOR_ID) 
+2024-01-25 12:22:30.778  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/003_healing.xml::8::nkobzev ran successfully in 49ms 
+2024-01-25 12:22:30.799  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::9::nkobzev 
+2024-01-25 12:22:30.829  INFO 1 - [       main] liquibase.changelog              : Table HEALING_RESULT created 
+2024-01-25 12:22:30.832  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::9::nkobzev ran successfully in 28ms 
+2024-01-25 12:22:30.843  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/004_healingResult.xml::10::nkobzev 
+2024-01-25 12:22:30.879  INFO 1 - [       main] liquibase.changelog              : Index HEALING_RESULT_PK created 
+2024-01-25 12:22:30.886  INFO 1 - [       main] liquibase.changelog              : Foreign key constraint added to HEALING_RESULT (HEALING_ID) 
+2024-01-25 12:22:30.888  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/004_healingResult.xml::10::nkobzev ran successfully in 43ms 
+2024-01-25 12:22:30.902  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::11::nkobzev 
+2024-01-25 12:22:30.913  INFO 1 - [       main] liquibase.changelog              : Table REPORT created 
+2024-01-25 12:22:30.919  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::11::nkobzev ran successfully in 15ms 
+2024-01-25 12:22:30.999  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/005_report.xml::12::nkobzev 
+2024-01-25 12:22:31.061  INFO 1 - [       main] liquibase.changelog              : Index REPORT_PK created 
+2024-01-25 12:22:31.064  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/005_report.xml::12::nkobzev ran successfully in 55ms 
+2024-01-25 12:22:31.083  INFO 1 - [       main] liquibase.ui                     : Running Changeset: changelog/006_command_and_healingenable_column.xml::13::nkobzev 
+2024-01-25 12:22:31.100  INFO 1 - [       main] liquibase.changelog              : Columns COMMAND(VARCHAR(264)),ENABLE_HEALING(BOOLEAN) added to SELECTOR 
+2024-01-25 12:22:31.103  INFO 1 - [       main] liquibase.changelog              : ChangeSet changelog/006_command_and_healingenable_column.xml::13::nkobzev ran successfully in 18ms 
+2024-01-25 12:22:31.171  INFO 1 - [       main] liquibase.util                   : UPDATE SUMMARY 
+2024-01-25 12:22:31.172  INFO 1 - [       main] liquibase.util                   : Run:                         10 
+2024-01-25 12:22:31.173  INFO 1 - [       main] liquibase.util                   : Previously run:               0 
+2024-01-25 12:22:31.174  INFO 1 - [       main] liquibase.util                   : Filtered out:                 0 
+2024-01-25 12:22:31.174  INFO 1 - [       main] liquibase.util                   : ------------------------------- 
+2024-01-25 12:22:31.175  INFO 1 - [       main] liquibase.util                   : Total change sets:           10 
+2024-01-25 12:22:31.176  INFO 1 - [       main] liquibase.util                   : Update summary generated 
+2024-01-25 12:22:31.188  INFO 1 - [       main] liquibase.command                : Update command completed successfully. 
+2024-01-25 12:22:31.189  INFO 1 - [       main] liquibase.ui                     : Liquibase: Update has been successful. Rows affected: 10 
+2024-01-25 12:22:31.200  INFO 1 - [       main] liquibase.lockservice            : Successfully released change log lock 
+2024-01-25 12:22:31.203  INFO 1 - [       main] liquibase.command                : Command execution complete 
+2024-01-25 12:22:31.890  INFO 1 - [       main] o.h.j.internal.util.LogHelper    : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-01-25 12:22:32.146  INFO 1 - [       main] org.hibernate.Version            : HHH000412: Hibernate ORM core version 6.4.1.Final 
+2024-01-25 12:22:32.289  INFO 1 - [       main] o.h.c.i.RegionFactoryInitiator   : HHH000026: Second-level cache disabled 
+2024-01-25 12:22:33.424  INFO 1 - [       main] .o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-01-25 12:22:33.559  WARN 1 - [       main] org.hibernate.orm.deprecation    : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-01-25 12:22:39.321  WARN 1 - [       main] o.h.m.internal.MetadataContext   : HHH015011: Unable to locate static metamodel field : com.epam.healenium.model.domain.Selector_#nodePathWrapper; this may or may not indicate a problem with the static metamodel 
+2024-01-25 12:22:39.353  INFO 1 - [       main] h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-01-25 12:22:39.399  INFO 1 - [       main] ontainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 12:22:42.392  INFO 1 - [       main] o.s.d.j.r.q.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-01-25 12:22:47.619  INFO 1 - [       main] .a.w.s.WelcomePageHandlerMapping : Adding welcome page template: index 
+2024-01-25 12:22:52.323  INFO 1 - [       main] .s.b.a.e.w.EndpointLinksResolver : Exposing 1 endpoint(s) beneath base path '/actuator' 
+2024-01-25 12:22:53.811  INFO 1 - [       main] o.s.b.w.e.t.TomcatWebServer      : Tomcat started on port 7878 (http) with context path '' 
+2024-01-25 12:22:54.333  INFO 1 - [       main] c.epam.healenium.Application     : Started Application in 55.679 seconds (process running for 62.856) 
+2024-01-25 12:22:54.519  INFO 1 - [hutdownHook] ontainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-01-25 12:22:54.534  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown initiated... 
+2024-01-25 12:22:54.562  INFO 1 - [hutdownHook] c.z.hikari.HikariDataSource      : HikariPool-1 - Shutdown completed. 

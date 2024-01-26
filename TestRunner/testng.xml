@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Gokomodo Automation Test" thread-count="1" parallel="tests"
+       data-provider-thread-count="1" group-by-instances="true">
+    <listeners>
+        <listener class-name="JavaDemo.Integrations.Listener.CustomListener"/>
+    </listeners>
+    <suite-files>
+
+    </suite-files>
+</suite> <!-- Suite -->
