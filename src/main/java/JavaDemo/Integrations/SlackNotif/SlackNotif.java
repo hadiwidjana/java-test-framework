@@ -1,6 +1,7 @@
 package JavaDemo.Integrations.SlackNotif;
 
 
+import JavaDemo.Integrations.Logger.Log;
 import JavaDemo.Integrations.Netlify.NetlifyAPI;
 import jakarta.annotation.PostConstruct;
 import org.apache.http.client.ClientProtocolException;
@@ -8,8 +9,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -46,8 +45,6 @@ public class SlackNotif {
         ENV=environment;
         NETLIFY_DEPLOY=netlifyDeploy;
     }
-    private static final Logger LOGGER = LoggerFactory.getLogger(SlackNotif.class);
-
     public static void sendSlackNotification(String webHook, String message) {
 
         CloseableHttpClient client = HttpClients.createDefault();
@@ -59,11 +56,7 @@ public class SlackNotif {
             httpPost.setHeader("Content-type", "application/json");
             client.execute(httpPost);
             client.close();
-            LOGGER.info("Slack notification sent");
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        } catch (ClientProtocolException e) {
-            throw new RuntimeException(e);
+            Log.info("Slack notification sent");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

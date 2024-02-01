@@ -7,25 +7,29 @@ import org.openqa.selenium.support.FindBy;
 
 
 @Page
-// page_url = https://ecommerce-playground.lambdatest.io/index.php?route=account/login
+// page_url = https://www.saucedemo.com/
 public class LoginPage extends MainPageObject {
 
-    @FindBy(xpath="//input[@name='email']")
-    private WebElement emailField;
-    @FindBy(xpath="//input[@name='password']")
+    @FindBy(id="user-name")
+    private WebElement usernameField;
+    @FindBy(id="password")
     private WebElement passwordField;
-    @FindBy(xpath = "//input[@value='Login']")
+    @FindBy(id = "login-button")
     private WebElement loginBtn;
 
 
+    public LoginPage openWebsiteUrl(){
+        driver.get(propertiesReader.getWebsiteUrl());
+        return this;
+    }
 
 
     @Step("Perform login")
-    public AccountPage performLogin(String email, String password) {
-        sendKeys(emailField,email);
+    public HomePage performLogin(String email, String password) {
+        sendKeys(usernameField,email);
         sendKeys(passwordField,password);
         click(loginBtn);
-        return accountPage;
+        return homePage;
     }
 
 }

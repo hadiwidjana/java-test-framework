@@ -1,5 +1,6 @@
 package JavaDemo.Integrations.AllureReport;
 
+import com.epam.healenium.SelfHealingDriver;
 import io.qameta.allure.Attachment;
 import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.WebDriver;
@@ -72,13 +73,13 @@ public class AllureAttachments {
     }
 
     @Attachment(value = "Attachment of WebElement {0}", type = "image/png")
-    public static byte[] saveWebElement(WebDriver driver, WebElement element) {
+    public static byte[] saveWebElement(SelfHealingDriver driver, WebElement element) {
         try {
             BufferedImage image = new AShot()
 //                    .shootingStrategy(ShootingStrategies.viewportRetina(100,0,0,2))
                     .coordsProvider(new WebDriverCoordsProvider())
                     .imageCropper(new IndentCropper())     //.addIndentFilter(blur()))
-                    .takeScreenshot(driver,element).getImage();
+                    .takeScreenshot(driver.getDelegate(),element).getImage();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(image, "png", baos);
             baos.flush();

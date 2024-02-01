@@ -1,7 +1,6 @@
-package JavaDemo.FE.Web.TestClasses;
+package JavaDemo.FE.MobileNative.TestClasses;
 
-import JavaDemo.FE.Web.PageObjects.HomePage;
-import JavaDemo.FE.Web.PageObjects.MainPageObject;
+import JavaDemo.FE.MobileNative.PageObjects.MainPageObjectMobile;
 import JavaDemo.Integrations.Listener.CustomListener;
 import JavaDemo.Integrations.SpringBoot.LazyAutowired;
 import JavaDemo.Integrations.SpringBoot.PropertiesReader;
@@ -16,11 +15,11 @@ import org.testng.annotations.Test;
 
 @SpringBootTest
 @Listeners(CustomListener.class)
-public class LoginTest extends AbstractTestNGSpringContextTests {
+public class LoginTestMobile extends AbstractTestNGSpringContextTests {
 
 
     @Autowired
-    public MainPageObject mainPageObject;
+    public MainPageObjectMobile mainPageObjectMobile;
     @Autowired
     public PropertiesReader propertiesReader;
 
@@ -29,8 +28,7 @@ public class LoginTest extends AbstractTestNGSpringContextTests {
 
     @Test(description="Login test with valid email and password")
     public void loginTest(){
-        mainPageObject.loginPage.openWebsiteUrl().performLogin(propertiesReader.getUserEmail(),propertiesReader.getUserPassword())
-                .verifyLoginSuccess();
+        mainPageObjectMobile.loginPageMobile.performLogin(propertiesReader.getUserEmail(),propertiesReader.getUserPassword());
     }
 
 }

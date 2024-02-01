@@ -2,6 +2,7 @@ package JavaDemo.FE;
 
 import JavaDemo.Integrations.Logger.Log;
 import JavaDemo.Integrations.SpringBoot.BaseTest;
+import JavaDemo.Integrations.SpringBoot.PropertiesReader;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.*;
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,6 +10,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.openqa.selenium.interactions.Actions;
 import ru.yandex.qatools.ashot.AShot;
@@ -29,11 +31,8 @@ import static JavaDemo.Integrations.Encryption.Encryption.encryptData;
 @BaseTest
 public class WebBaseMethod extends ExplicitWaiting {
 
-
-    @Value("${highlight.element}")
-    protected String highlight;
-    @Value("${screenshot.element}")
-    protected String screenshot;
+    @Autowired
+    PropertiesReader propertiesReader;
 
     //to inverse web element to css selector
     final String JS_BUILD_CSS_SELECTOR =
@@ -67,8 +66,8 @@ public class WebBaseMethod extends ExplicitWaiting {
         explicitWaitElementToBeClickable(element, 5000);
 
         //highlight
-        if (highlight.equalsIgnoreCase("on")) highlightElement(element);
-        if (screenshot.equalsIgnoreCase("on")) {
+        if (propertiesReader.isHighlightElement()) highlightElement(element);
+        if (propertiesReader.isScreenshotElement()) {
             //screenshot element
             try {
                 screenshotElement(element);
@@ -104,8 +103,8 @@ public class WebBaseMethod extends ExplicitWaiting {
         //ensure element on display
         scrollToCenter(element);
         //highlight
-        if (highlight.equalsIgnoreCase("on")) highlightElement(element);
-        if (screenshot.equalsIgnoreCase("on")) {
+        if (propertiesReader.isHighlightElement()) highlightElement(element);
+        if (propertiesReader.isScreenshotElement()) {
             //screenshot element
             try {
                 screenshotElement(element);
@@ -131,8 +130,8 @@ public class WebBaseMethod extends ExplicitWaiting {
 
     //Hover mouse methods//
     public void hover(WebElement element) {
-        if (highlight.equalsIgnoreCase("on")) highlightElement(element);
-        Actions action = new Actions(driver);
+        if (propertiesReader.isHighlightElement()) highlightElement(element);
+        Actions action = new Actions(driver.getDelegate());
         action.moveToElement(element).perform();
     }
 
@@ -141,7 +140,7 @@ public class WebBaseMethod extends ExplicitWaiting {
         Actions actions = new Actions(driver);
         Action action = actions.clickAndHold(clickAndHoldElement).build();
         action.perform();
-        if (highlight.equalsIgnoreCase("on")) highlightElement(clickAndHoldElement);
+        if (propertiesReader.isHighlightElement()) highlightElement(clickAndHoldElement);
         action = actions.release(clickAndHoldElement).build();
         action.perform();
     }
@@ -151,7 +150,7 @@ public class WebBaseMethod extends ExplicitWaiting {
         actions.moveToElement(elementHover);
         actions.moveToElement(elementClick);
         actions.click().build().perform();
-        if (highlight.equalsIgnoreCase("on")) highlightElement(elementClick);
+        if (propertiesReader.isHighlightElement()) highlightElement(elementClick);
     }
 
 
@@ -291,7 +290,7 @@ public class WebBaseMethod extends ExplicitWaiting {
             BufferedImage image = new AShot().shootingStrategy(ShootingStrategies.viewportRetina(100, 0, 0, 2))
                     .coordsProvider(new WebDriverCoordsProvider())
                     .imageCropper(new IndentCropper())     //.addIndentFilter(blur()))
-                    .takeScreenshot(staticDriver, element).getImage();
+                    .takeScreenshot(staticDriver.getDelegate(), element).getImage();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(image, "png", baos);
             baos.flush();

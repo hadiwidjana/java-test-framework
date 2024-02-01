@@ -45,8 +45,8 @@ public class AppiumServer {
 //                        .withArgument(GeneralServerFlag.BASEPATH, "/wd/hub/")
                         .withArgument(() -> "--allow-insecure", "chromedriver_autodownload")
                         .withArgument(() -> "--allow-insecure", "adb_shell")
-                        .withEnvironment(environment)
-                        .withLogFile(new File("target/gate-logs/appium.log")));
+                        .withEnvironment(environment));
+//                        .withLogFile(new File("target/gate-logs/appium.log")));
             }
             default -> throw new NotFoundException("OS not supported");
         }

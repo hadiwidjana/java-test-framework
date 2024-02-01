@@ -7,6 +7,7 @@ import io.appium.java_client.android.AndroidDriver;
 import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,6 +23,7 @@ public class ExplicitWaiting {
     public SelfHealingDriver driver;
     public static SelfHealingDriver staticDriver;
     public static AndroidDriver androidDriver;
+    public static WebDriver webDriver;
 
 
     @PostConstruct
@@ -29,6 +31,7 @@ public class ExplicitWaiting {
         staticDriver = driver;
         try{
             androidDriver = (AndroidDriver) driver.getDelegate();
+            webDriver = (WebDriver) driver.getDelegate();
         } catch (ClassCastException e){
 
         }

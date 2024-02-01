@@ -35,8 +35,8 @@ public class PropertiesReader {
     private String androidAppId;
     @Value("${android.google.release.id}")
     private String androidReleaseId;
-    @Value("${android.drive.url}")
-    private String androidDriveLink;
+    @Value("${android.app.url}")
+    private String androidAppUrl;
 
     //ios
     @Value("${ios.name}")
@@ -51,6 +51,9 @@ public class PropertiesReader {
     private String iosAppId;
     @Value("${ios.google.release.id}")
     private String iosReleaseId;
+    @Value("${ios.app.url}")
+    private String iosAppUrl;
+
 
     @Value("${highlight.element}")
     private boolean highlightElement;
@@ -81,15 +84,9 @@ public class PropertiesReader {
 
     @Value("${website.url}")
     private String websiteUrl;
-    @Value("${user.email}")
+    @Value("${user.username}")
     private String userEmail;
     @Value("${user.password}")
     private String userPassword;
-    @Value("${user.firstname}")
-    private String userFirstName;
-    @Value("${user.lastname}")
-    private String userLastName;
-    @Value("${user.telephone}")
-    private String userTelephone;
 
 }

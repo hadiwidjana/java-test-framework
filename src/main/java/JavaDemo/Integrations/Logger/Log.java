@@ -1,40 +1,23 @@
 package JavaDemo.Integrations.Logger;
 
 import jakarta.annotation.PostConstruct;
-import org.apache.log4j.*;
+import org.apache.logging.log4j.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-
 @Component
 public class Log {
-    private static final Logger LOGGER = Logger.getLogger(Log.class);
-    private static PatternLayout layout = new PatternLayout("%d{dd MMM yyyy HH:mm:ss} %5p %c{1} - %m%n");
-    private static FileAppender appender;
-    private static ConsoleAppender consoleAppender;
+    private static final Logger logger = LogManager.getLogger(Log.class);
 
     @Value("${log}")
-    private String enableLog;
-    private static String ENABLE_LOG;
+    private boolean enableLog;
+    private static boolean ENABLE_LOG;
 
     @PostConstruct
     public void initLog(){
-        ENABLE_LOG = enableLog.toLowerCase();
+        ENABLE_LOG = enableLog;
     }
 
-    static
-    {
-        try
-        {
-            consoleAppender = new ConsoleAppender(layout, "System.out");
-            appender= new FileAppender(layout,"target/gate-logs/gate.log",true);
-        }
-        catch (IOException exception)
-        {
-            exception.printStackTrace();
-        }
-    }
 
     /**
      * method to display errors in log.
@@ -44,14 +27,11 @@ public class Log {
      */
     public static void error (String className,String methodName,String exception)
     {
-        if(ENABLE_LOG.equals("on")){
-            LOGGER.addAppender(consoleAppender);
-            LOGGER.addAppender(appender);
-            LOGGER.setLevel((Level) Level.ERROR);
-            LOGGER.info("ClassName :"+className);
-            LOGGER.info("MethodName :"+methodName );
-            LOGGER.info("Exception :" +exception);
-            LOGGER.info("-----------------------------------------------------------------------------------");
+        if(ENABLE_LOG){
+            logger.error("ClassName :"+className);
+            logger.error("MethodName :"+methodName );
+            logger.error("Exception :" +exception);
+            logger.error("-----------------------------------------------------------------------------------");
         }
 
     }
@@ -61,71 +41,44 @@ public class Log {
      * @param message message to be displayed
      */
     public static void info(String message){
-        if(ENABLE_LOG.equals("on")) {
-            consoleAppender.setName("Console");
-            LOGGER.addAppender(consoleAppender);
-            LOGGER.addAppender(appender);
-            LOGGER.setLevel((Level) Level.INFO);
-            LOGGER.info(message);
+        if(ENABLE_LOG) {
+            logger.info(message);
         }
     }
 
     public static void warn(String message){
-        if(ENABLE_LOG.equals("on")) {
-            LOGGER.addAppender(consoleAppender);
-            LOGGER.addAppender(appender);
-            LOGGER.setLevel((Level) Level.WARN);
-            LOGGER.warn(message);
+        if(ENABLE_LOG) {
+            logger.warn(message);
         }
     }
 
     public static void infoRed(String message){
-        if(ENABLE_LOG.equals("on")) {
-            consoleAppender.setName("Console");
-            LOGGER.addAppender(consoleAppender);
-            LOGGER.addAppender(appender);
-            LOGGER.setLevel((Level) Level.INFO);
-            LOGGER.info("\u001b[0;31m" + message + "\u001b[m");
+        if(ENABLE_LOG) {
+            logger.info("\u001b[0;31m" + message + "\u001b[m");
         }
     }
 
     public static void infoGreen(String message){
-        if(ENABLE_LOG.equals("on")) {
-            consoleAppender.setName("Console");
-            LOGGER.addAppender(consoleAppender);
-            LOGGER.addAppender(appender);
-            LOGGER.setLevel((Level) Level.INFO);
-            LOGGER.info("\u001b[0;32m" + message + "\u001b[m");
+        if(ENABLE_LOG) {
+            logger.info("\u001b[0;32m" + message + "\u001b[m");
         }
     }
 
     public static void infoYellow(String message){
-        if(ENABLE_LOG.equals("on")) {
-            consoleAppender.setName("Console");
-            LOGGER.addAppender(consoleAppender);
-            LOGGER.addAppender(appender);
-            LOGGER.setLevel((Level) Level.INFO);
-            LOGGER.info("\u001b[0;33m" + message + "\u001b[m");
+        if(ENABLE_LOG) {
+            logger.info("\u001b[0;33m" + message + "\u001b[m");
         }
     }
 
     public static void infoBlue(String message){
-        if(ENABLE_LOG.equals("on")) {
-            consoleAppender.setName("Console");
-            LOGGER.addAppender(consoleAppender);
-            LOGGER.addAppender(appender);
-            LOGGER.setLevel((Level) Level.INFO);
-            LOGGER.info("\u001b[0;34m" + message + "\u001b[m");
+        if(ENABLE_LOG) {
+            logger.info("\u001b[0;34m" + message + "\u001b[m");
         }
     }
 
     public static void infoMagenta(String message){
-        if(ENABLE_LOG.equals("on")) {
-            consoleAppender.setName("Console");
-            LOGGER.addAppender(consoleAppender);
-            LOGGER.addAppender(appender);
-            LOGGER.setLevel((Level) Level.INFO);
-            LOGGER.info("\u001b[0;35m" + message + "\u001b[m");
+        if(ENABLE_LOG) {
+            logger.info("\u001b[0;35m" + message + "\u001b[m");
         }
     }
 

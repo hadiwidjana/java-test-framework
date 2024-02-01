@@ -12,39 +12,23 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static JavaDemo.Integrations.Assertion.Assertions.assertEquals;
+
 
 @Page
 // page_url = https://ecommerce-playground.lambdatest.io/
 public class HomePage extends MainPageObject {
+    @FindBy(css = "div[class='app_logo']")
+    public WebElement divSwagLabs;
 
-
-	@FindBy(xpath="//li[@class='nav-item dropdown dropdown-hoverable']//span[contains(text(),'My account')][@class='title']")
-	private WebElement myAccountDd;
-	@FindBy(xpath="//span[contains(text(),'Login')][@class='title']")
-	private WebElement loginBtn;
-    @FindBy(xpath = "//a[@data-toggle='mz-pure-drawer']/i")
-    private WebElement profileIcon;
-
-
-
-
-
-    public HomePage openWebsiteUrl(){
-        driver.get(propertiesReader.getWebsiteUrl());
+    
+    
+    
+    
+    @Step("Verify that login successful")
+    public HomePage verifyLoginSuccess(){
+        assertEquals(divSwagLabs.getText(),"Swag Labs");
         return this;
-    }
-
-
-
-    @Step("Navigate to login page")
-    public LoginPage navigateToLoginPage() {
-        if (propertiesReader.getDevice().contains("android")){
-            click(profileIcon);
-        } else {
-            hover(myAccountDd);
-        }
-        click(loginBtn);
-        return loginPage;
     }
 
 }
